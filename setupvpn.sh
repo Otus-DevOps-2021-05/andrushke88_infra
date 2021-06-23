@@ -6,5 +6,8 @@ apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv 7568D9BB55FF9E5287D586
 apt-get --assume-yes update
 apt-get --assume-yes upgrade
 apt-get --assume-yes install pritunl mongodb-org
+apt-get --assume-yes install iptables
+sudo iptables -A INPUT -p tcp -m tcp --sport 443 --dport 1025:65355 -j ACCEPT
+sudo iptables -A INPUT -p udp -m udp --sport 443 --dport 1025:65355 -j ACCEPT
 systemctl start pritunl mongod
 systemctl enable pritunl mongod
