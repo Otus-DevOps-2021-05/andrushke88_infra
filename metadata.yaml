@@ -1,7 +1,7 @@
 #cloud-config
 users:
   - default
-  - name: yc-user 
+  - name: yc-user
     groups: sudo
     shell: /bin/bash
     sudo: ALL=(ALL) NOPASSWD:ALL
@@ -10,7 +10,7 @@ users:
 
 runcmd:
   - wget -qO - https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add -
-  - echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/4.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.2.list
+  - echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/4.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.2.list
   - apt-get update
   - sudo apt-get install -y ruby-full ruby-bundler build-essential git mongodb-org
   - sudo systemctl enable mongod
@@ -18,4 +18,3 @@ runcmd:
   - git clone -b monolith https://github.com/express42/reddit.git
   - cd reddit && bundle install
   - puma -d
-
