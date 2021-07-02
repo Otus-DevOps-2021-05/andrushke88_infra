@@ -16,7 +16,7 @@ runcmd:
   - apt-get --assume-yes update
   - apt-get --assume-yes install mongodb-org
   - wget https://repo.mongodb.org/apt/ubuntu/dists/xenial/mongodb-org/4.2/multiverse/binary-amd64/mongodb-org_4.2.12_amd64.deb
-  - dpkg -i mongodb-org_4.2.12_amd64.deb
+  - sudo dpkg -i mongodb-org_4.2.12_amd64.deb
   - apt-get install -y ruby-full ruby-bundler build-essential git
   - systemctl enable mongod
   - systemctl start mongod
