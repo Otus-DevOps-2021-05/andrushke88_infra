@@ -2,7 +2,8 @@
 #Get some Mongodb 4.2
 wget -qO - https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add -
 echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/4.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.2.list
-sudo apt update && sudo apt install -y mongodb-org 
+sudi apt update && sudo apt-get install -y apt-transport-https ca-certificates
+sudo apt update && sudo apt install -y mongodb-org
 #Start Mongodb
 sudo systemctl start mongod
 sudo systemctl enable mongod
