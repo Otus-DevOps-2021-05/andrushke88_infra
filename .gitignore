@@ -7,3 +7,4 @@
 .terraform/
 yc1
 yc1.pub
+main.tf.old

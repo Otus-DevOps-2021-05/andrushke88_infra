@@ -1,0 +1,26 @@
+{
+    "builders": [
+        {
+            "type": "yandex",
+            "service_account_key_file": "{{ user `srvacckey` }}",
+            "folder_id": "{{ user `fid`}}",
+            "subnet_id": "e9boi8i3i41qeriucoqm",
+            "zone":      "ru-central1-a",
+            "use_ipv4_nat":        true,
+            "image_description": "terraform2 hw",
+            "source_image_family": "{{ user `img` }}",
+            "image_name": "reddit-db-base",
+            "image_family": "reddit-base",
+            "ssh_username": "ubuntu",
+            "disk_type": "network-hdd",
+            "platform_id": "standard-v1"
+        }
+   ],
+    "provisioners": [
+    {
+            "type": "shell",
+            "script": "scripts/install_mongodb.sh",
+            "execute_command": "sudo {{.Path}}"
+        }
+    ]
+}
