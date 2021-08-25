@@ -1,5 +1,5 @@
 {
-  "fid": "b1go0hh3svovf67g5trs",
-  "img": "ubuntu-1604-lts",
-  "srvacckey": "/home/epic/key.json"
+  "folder_id": "b1go0hh3svovf67g5trs",
+  "image": "ubuntu-1604-lts",
+  "key": "/home/epic/key.json"
 }
