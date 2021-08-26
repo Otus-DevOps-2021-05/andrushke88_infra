@@ -19,6 +19,7 @@ module "app" {
   public_key_path = var.public_key_path
   app_disk_image  = var.app_disk_image
   subnet_id       = var.subnet_id
+  private_key_path = var.private_key_path
   dbip             = module.db.internal_ip_address_db
 }
 
@@ -27,5 +28,6 @@ module "db" {
   name            = "reddit-db-stage"
   public_key_path = var.public_key_path
   db_disk_image   = var.db_disk_image
+  private_key_path = var.private_key_path
   subnet_id       = var.subnet_id
 }
