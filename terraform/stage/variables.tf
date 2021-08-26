@@ -44,3 +44,7 @@ variable access1 {
 }
 variable secret {
   description = "secret-key"
+}
+variable dbip {
+  description = "Database ip"
+  }
