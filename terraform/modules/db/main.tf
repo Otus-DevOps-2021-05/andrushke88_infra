@@ -1,5 +1,5 @@
 resource "yandex_compute_instance" "db" {
-  name = "reddit-db"
+  name = var.name
   labels = {
     tags = "reddit-db"
   }
@@ -26,15 +26,16 @@ resource "yandex_compute_instance" "db" {
     ssh-keys = "ubuntu:${file(var.public_key_path)}"
   }
   connection {
-    type  = "ssh"
-    host  = yandex_compute_instance.db.network_interface.0.nat_ip_address
-    user  = "ubuntu"
-    agent = false
+    type        = "ssh"
+    host        = yandex_compute_instance.db.network_interface[0].nat_ip_address
+    user        = "ubuntu"
     private_key = file(var.private_key_path)
+    agent       = false
+    timeout     = "1m"
   }
 
   provisioner "file" {
-    source      = var.path_mongod_conf
+    source      = "/files/mongod.conf"
     destination = "/tmp/mongod.conf"
   }
 

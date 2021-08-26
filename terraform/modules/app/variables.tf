@@ -14,3 +14,8 @@ variable private_key_path {
 variable dbip {
   description = "Database IP"
   }
+  variable name {
+  description = "Instance name"
+  type = string
+  default = "reddit-app"
+}
