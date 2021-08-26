@@ -10,7 +10,7 @@
             "image_description": "terraform2 hw",
             "source_image_family": "{{ user `image` }}",
             "image_name": "reddit-db-base",
-            "image_family": "reddit-base",
+            "image_family": "reddit-db-base",
             "ssh_username": "ubuntu",
             "disk_type": "network-hdd",
             "platform_id": "standard-v1"

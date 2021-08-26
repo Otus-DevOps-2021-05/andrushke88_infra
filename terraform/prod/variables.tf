@@ -44,4 +44,4 @@ variable access1 {
 }
 variable secret {
   description = "secret-key"
-}
+  }

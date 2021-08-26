@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
     endpoint                    = "storage.yandexcloud.net"
-    bucket                      = "epicbucket"
+    bucket                      = "epicbucket1"
     region                      = "ru-central1-a"
     key                         = "terraform.tfstate"
     access_key                  = "access key"

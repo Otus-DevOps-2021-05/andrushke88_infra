@@ -20,9 +20,31 @@ resource "yandex_compute_instance" "app" {
   network_interface {
     subnet_id = var.subnet_id
     nat       = true
-  }
+    }
 
   metadata = {
     ssh-keys = "ubuntu:${file(var.public_key_path)}"
+  }
+
+  connection {
+    type        = "ssh"
+    host        = yandex_compute_instance.app.network_interface[0].nat_ip_address
+    user        = "ubuntu"
+    private_key = file(var.private_key_path)
+    agent       = false
+    timeout     = "1m"
+  }
+
+   provisioner "file" {
+    source      = "files/puma.service"
+    destination = "/tmp/puma.service"
+  }
+
+
+
+  provisioner "remote-exec" {
+    inline = ["export DATABASE_URL=${var.dbip}"]
+    script = "files/deploy.sh"
+
   }
 }
