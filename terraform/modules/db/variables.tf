@@ -10,8 +10,8 @@ variable db_disk_image {
 }
 variable name {
   description = "Instance name"
-  type = string
-  default = "reddit-db"
+  type        = string
+  default     = "reddit-db"
 }
 variable private_key_path {
   description = "Path to the public key used for ssh access"

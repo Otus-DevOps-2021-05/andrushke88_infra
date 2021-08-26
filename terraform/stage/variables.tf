@@ -47,4 +47,4 @@ variable secret {
 }
 variable dbip {
   description = "Database ip"
-  }
+}
