@@ -26,9 +26,18 @@ resource "yandex_compute_instance" "app" {
     ssh-keys = "ubuntu:${file(var.public_key_path)}"
   }
 
+  scheduling_policy {
+    preemptible = true
+  }
+}
+resource "null_resource" "app" {
+  count = var.enable_provision ? 1 : 0
+  triggers = {
+    cluster_instance_ids = yandex_compute_instance.app.id
+  }
   connection {
     type        = "ssh"
-    host        = yandex_compute_instance.app.network_interface[0].nat_ip_address
+    host        = yandex_compute_instance.app.network_interface.0.nat_ip_address
     user        = "ubuntu"
     private_key = file(var.private_key_path)
     agent       = false

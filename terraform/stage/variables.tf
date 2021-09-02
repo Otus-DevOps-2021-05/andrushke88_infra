@@ -39,12 +39,12 @@ variable db_disk_image {
   description = "Disk image for reddit db"
   default     = "reddit-db-base"
 }
-variable access1 {
-  description = "access key id"
-}
-variable secret {
-  description = "secret-key"
-}
+
 variable dbip {
   description = "Database ip"
+  default="0.0.0.0"
+}
+variable enable_provision {
+  description = "Provision t/f"
+  default     = true
 }

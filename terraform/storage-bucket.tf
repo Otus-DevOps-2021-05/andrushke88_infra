@@ -7,8 +7,8 @@ provider "yandex" {
 }
 
 resource "yandex_storage_bucket" "test100500" {
-  access_key    = "accesskey"
-  secret_key    = "secretkey"
-  bucket        = "epicbucket"
+  access_key    = var.access1
+  secret_key    = var.secret
+  bucket        = "epicbucket1"
   force_destroy = true
 }

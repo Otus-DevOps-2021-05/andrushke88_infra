@@ -19,3 +19,7 @@ variable name {
   type        = string
   default     = "reddit-app"
 }
+variable enable_provision {
+  description = "Enable provision"
+  default = true
+}

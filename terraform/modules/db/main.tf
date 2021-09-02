@@ -25,6 +25,7 @@ resource "yandex_compute_instance" "db" {
   metadata = {
     ssh-keys = "ubuntu:${file(var.public_key_path)}"
   }
+  
   connection {
     type        = "ssh"
     host        = yandex_compute_instance.db.network_interface[0].nat_ip_address
