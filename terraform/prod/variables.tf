@@ -48,3 +48,7 @@ variable secret {
 variable dbip {
   description = "Database ip"
 }
+variable enable_provision {
+  description = "Provision t/f"
+  default     = true
+}
