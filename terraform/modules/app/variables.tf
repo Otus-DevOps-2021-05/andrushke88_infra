@@ -21,5 +21,5 @@ variable name {
 }
 variable enable_provision {
   description = "Enable provision"
-  default = true
+  default = false
 }
