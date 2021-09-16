@@ -1,5 +1,5 @@
 - name: Clone
-  hosts: app
+  hosts: app-stage
   tasks:
     - name: Clone repo
       git:
