@@ -1,10 +1,10 @@
 ---
-- name: Deploy app
+- name: Deploy App
   hosts: app
   tasks:
     - name: Install git
       become: true
-      apt: 
+      apt:
         name: git
         install_recommends: yes
 
@@ -19,9 +19,8 @@
       bundler:
         state: present
         chdir: /home/ubuntu/reddit
-        
+
   handlers:
     - name: restart puma
       become: true
       systemd: name=puma state=restarted
-      
