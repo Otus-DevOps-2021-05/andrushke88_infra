@@ -7,7 +7,7 @@ resource "yandex_compute_instance" "app" {
   resources {
     cores         = 2
     memory        = 2
-    core_fraction = 5
+    core_fraction = 20
     gpus          = 0
   }
 
@@ -30,29 +30,29 @@ resource "yandex_compute_instance" "app" {
     preemptible = true
   }
 }
-resource "null_resource" "app" {
-  count = var.enable_provision ? 1 : 0
-  triggers = {
-    cluster_instance_ids = yandex_compute_instance.app.id
-  }
-  connection {
-    type        = "ssh"
-    host        = yandex_compute_instance.app.network_interface.0.nat_ip_address
-    user        = "ubuntu"
-    private_key = file(var.private_key_path)
-    agent       = false
-    timeout     = "1m"
-  }
+#resource "null_resource" "app" {
+ # count = var.enable_provision ? 1 : 0
+ # triggers = {
+ #   cluster_instance_ids = yandex_compute_instance.app.id
+#  }
+ # connection {
+ #   type        = "ssh"
+ #   host        = yandex_compute_instance.app.network_interface.0.nat_ip_address
+ #   user        = "ubuntu"
+ #   private_key = file(var.private_key_path)
+ #   agent       = false
+#    timeout     = "1m"
+ # }
 
-  provisioner "file" {
-    source      = "files/puma.service"
-    destination = "/tmp/puma.service"
-  }
+#  provisioner "file" {
+#    source      = "files/puma.service"
+#    destination = "/tmp/puma.service"
+#  }
 
-  provisioner "remote-exec" {
-    inline = ["export DATABASE_URL=${var.dbip}"]
-  }
-  provisioner "remote-exec" {
-    script = "files/deploy.sh"
-  }
-}
+  #provisioner "remote-exec" {
+  #  inline = ["export DATABASE_URL=${var.dbip}"]
+  #}
+  #provisioner "remote-exec" {
+  #  script = "files/deploy.sh"
+  #}
+#}

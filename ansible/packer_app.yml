@@ -1,0 +1,17 @@
+---
+- name: Install app host
+  hosts: app
+  become: true
+  tasks:
+    - name: Install soft
+      apt: 
+        name: {{ item }}
+        with_items:
+            - apt-transport-https 
+            - ca-certificates 
+            - ruby-full 
+            - ruby-bundler 
+            - build-essential
+        state: present
+        update_cache: yes
+  

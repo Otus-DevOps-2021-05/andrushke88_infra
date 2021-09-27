@@ -11,9 +11,7 @@ variable app_disk_image {
 variable private_key_path {
   description = "Path to the public key used for ssh access"
 }
-variable dbip {
-  description = "Database IP"
-}
+
 variable name {
   description = "Instance name"
   type        = string
