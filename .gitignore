@@ -10,3 +10,5 @@ yc1.pub
 main.tf.old
 *.tmp
 *.retry
+jdauphant.nginx
+vault.key

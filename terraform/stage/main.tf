@@ -6,6 +6,12 @@ provider "yandex" {
   service_account_key_file = var.service_account_key_file
 }
 
+module "vpc" {
+  source           = "../modules/vpc"
+  app_network_name = var.app_network_name
+  app_subnet_name  = var.app_subnet_name
+}
+
 module "app" {
   source           = "../modules/app"
   name             = "reddit-app-stage"
